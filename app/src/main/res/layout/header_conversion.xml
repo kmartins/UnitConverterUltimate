@@ -1,83 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:baselineAligned="false"
-    android:orientation="horizontal">
+    android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_width="0px"
+    <TableLayout
+        android:id="@+id/header_values_container"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_marginLeft="@dimen/margin_view_typical"
+        android:layout_marginRight="@dimen/margin_view_typical"
+        android:layout_marginTop="@dimen/margin_view_typical"
+        android:layout_marginBottom="@dimen/margin_view_typical"
+        android:stretchColumns="1">
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/header_value_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Value:"/>
+
+            <EditText
+                android:id="@+id/header_value_from"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_view_typical"
+                android:layout_marginStart="@dimen/margin_view_typical"
+                android:inputType="numberSigned|numberDecimal"
+                android:maxLength="@integer/num_digits_from"
+                android:scrollHorizontally="true"
+                android:text="@string/default_value">
+
+                <requestFocus/>
+
+            </EditText>
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/header_result_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Result:"/>
+
+            <!-- Use EditText instead of TextView to allow horizontal scrolling if answer is too long -->
+            <EditText
+                android:id="@+id/header_value_to"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_view_typical"
+                android:layout_marginStart="@dimen/margin_view_typical"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="none"
+                android:scrollHorizontally="true"/>
+
+        </TableRow>
+
+    </TableLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header_values_container"
+        android:layout_marginLeft="@dimen/margin_view_typical"
+        android:layout_marginRight="@dimen/margin_view_typical"
         android:layout_marginTop="@dimen/margin_view_typical"
         android:layout_marginBottom="@dimen/margin_view_small">
-
-        <EditText
-            android:id="@+id/header_value_from"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_view_typical"
-            android:layout_marginRight="@dimen/margin_view_typical"
-            android:inputType="numberSigned|numberDecimal"
-            android:maxLength="@integer/num_digits_from"
-            android:scrollHorizontally="true"
-            android:text="@string/default_value">
-
-            <requestFocus/>
-
-        </EditText>
 
         <TextView
             android:id="@+id/header_text_from"
-            android:layout_width="wrap_content"
+            android:layout_width="0px"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/header_value_from"
-            android:layout_alignStart="@id/header_value_from"
-            android:layout_below="@id/header_value_from"
-            android:layout_marginBottom="@dimen/margin_view_typical"
-            android:layout_marginLeft="@dimen/margin_view_small"
-            android:layout_marginStart="@dimen/margin_view_small"
-            android:layout_marginTop="@dimen/margin_view_typical"
+            android:layout_weight="1"
             android:text="@string/text_from"/>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="0px"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_marginTop="@dimen/margin_view_typical"
-        android:layout_marginBottom="@dimen/margin_view_small">
-
-        <!-- Use EditText instead of TextView to allow horizontal scrolling if answer is too long -->
-        <EditText
-            android:id="@+id/header_value_to"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_view_typical"
-            android:layout_marginRight="@dimen/margin_view_typical"
-            android:clickable="false"
-            android:cursorVisible="false"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:gravity="center"
-            android:inputType="none"
-            android:scrollHorizontally="true"/>
-
 
         <TextView
             android:id="@+id/header_text_to"
-            android:layout_width="wrap_content"
+            android:layout_width="0px"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/header_value_to"
-            android:layout_alignStart="@id/header_value_to"
-            android:layout_below="@id/header_value_to"
             android:layout_marginLeft="@dimen/margin_view_small"
             android:layout_marginStart="@dimen/margin_view_small"
-            android:layout_marginTop="@dimen/margin_view_typical"
+            android:layout_weight="1"
             android:text="@string/text_to"/>
 
-    </RelativeLayout>
+    </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
